@@ -1,0 +1,105 @@
+version: 1
+title: "Ham, Cheese & Onion Bread Pudding Casserole"
+source:
+  type: original
+  name: "User submission"
+  url: ""
+category: breakfast
+cuisine: american
+cooking_method: baking
+tags: [ham, bread, casserole, make-ahead, savory]
+difficulty: easy
+servings: 6
+prep_time: "15m"
+cook_time: "45m"
+images:
+  hero: ""
+  thumbnail: ""
+equipment:
+  - "Mixing bowl"
+  - "Whisk"
+  - "Oven"
+  - "Square baking dish"
+ingredients:
+  - group: "Ingredients"
+    items:
+      - name: "bread"
+        quantity: 8
+        unit: piece
+        notes: "cubed into ½-inch pieces"
+      - name: "ham"
+        quantity: 1.5
+        unit: cup
+        notes: "chopped"
+      - name: "cheddar cheese"
+        quantity: 1
+        unit: cup
+        notes: "shredded"
+      - name: "onion"
+        quantity: 0.5
+        unit: cup
+        notes: "finely chopped and sautéed"
+      - name: "eggs"
+        quantity: 4
+        unit: piece
+      - name: "milk"
+        quantity: 1.5
+        unit: cup
+      - name: "soy sauce"
+        quantity: 2
+        unit: tsp
+      - name: "brown sugar"
+        quantity: 2
+        unit: tsp
+      - name: "salt"
+        quantity: 0.5
+        unit: tsp
+      - name: "black pepper"
+        quantity: 0.25
+        unit: tsp
+      - name: "parsley"
+        quantity: 1
+        unit: tbsp
+        notes: "chopped, for garnish"
+steps:
+  - instruction: "Preheat oven to 350°F."
+  - instruction: "Grease a square baking dish."
+  - instruction: "Sauté chopped onion until soft and golden."
+    duration: "5m"
+  - instruction: "In a large bowl, combine bread cubes, ham, cheese, and sautéed onion."
+  - instruction: "In another bowl, whisk eggs, milk, soy sauce, brown sugar, salt, and pepper."
+  - instruction: "Pour the egg mixture over the bread mixture and stir to combine."
+  - instruction: "Let the mixture sit for 10 minutes to absorb."
+    duration: "10m"
+  - instruction: "Transfer mixture to the baking dish and press down lightly."
+  - instruction: "Bake for 45 minutes until golden and set."
+    duration: "45m"
+  - instruction: "Garnish with chopped parsley and serve warm."
+nutrition:
+  estimated: true
+  per_serving:
+    calories: 320
+    fat: 18
+    saturated_fat: 9
+    carbohydrates: 22
+    sugar: 6
+    fiber: 2
+    protein: 18
+    sodium: 780
+    potassium: 260
+    calcium: 220
+    iron: 1.2
+    vitamin_a: 180
+    vitamin_b6: 0.3
+    vitamin_b12: 0.9
+    vitamin_c: 2
+    vitamin_d: 0.8
+    vitamin_k: 12
+    folate: 40
+    phosphorus: 180
+    magnesium: 22
+    zinc: 1.4
+notes: |
+  This casserole is a great way to use up leftover ham and bread.
+  The soy sauce and brown sugar add a subtle sweet-savory depth.
+  Can be made ahead and reheated for breakfast or brunch.
