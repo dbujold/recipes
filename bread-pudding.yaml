@@ -38,7 +38,11 @@ ingredients:
       - name: "onion"
         quantity: 0.5
         unit: cup
-        notes: "finely chopped and sautéed"
+        notes: "finely chopped"
+      - name: "green onion"
+        quantity: 0.5
+        unit: cup
+        notes: "finely chopped"
       - name: "eggs"
         quantity: 4
         unit: piece
@@ -48,6 +52,7 @@ ingredients:
       - name: "soy sauce"
         quantity: 2
         unit: tsp
+        notes: "for umami"
       - name: "brown sugar"
         quantity: 2
         unit: tsp
