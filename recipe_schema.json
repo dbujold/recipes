@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://recettes.app/recipe.schema.json",
+  "title": "Recipe",
+  "description": "A cooking recipe in the Recettes YAML format.",
+  "type": "object",
+  "required": ["title", "category"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "description": "Schema version number.",
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The name of the recipe."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "appetizer", "soup", "salad", "mainCourse", "sideDish",
+        "pasta", "bread", "dessert", "pastry", "beverage",
+        "sauce", "snack", "breakfast", "preserves", "basics"
+      ],
+      "description": "The recipe category."
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "intermediate", "advanced"],
+      "default": "easy",
+      "description": "Difficulty level."
+    },
+    "servings": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 4,
+      "description": "Number of servings."
+    },
+    "servings_text": {
+      "type": "string",
+      "description": "Human-readable yield description, e.g. '1 loaf' or '24 cookies'."
+    },
+    "cuisine": {
+      "type": "string",
+      "enum": [
+        "french", "italian", "mexican", "thai", "japanese", "chinese",
+        "indian", "korean", "vietnamese", "greek", "spanish", "moroccan",
+        "turkish", "lebanese", "ethiopian", "american", "british",
+        "german", "brazilian", "caribbean", "other"
+      ],
+      "description": "Cuisine type."
+    },
+    "cooking_method": {
+      "type": "string",
+      "enum": [
+        "baking", "grilling", "roasting", "frying", "deepFrying",
+        "sauteing", "steaming", "boiling", "simmering", "braising",
+        "poaching", "smoking", "slowCooking", "pressureCooking",
+        "stirFrying", "blanching", "broiling", "noCook", "other"
+      ],
+      "description": "Primary cooking method."
+    },
+    "suitable_for_diet": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "vegetarian", "vegan", "glutenFree", "dairyFree",
+          "nutFree", "eggFree", "pescatarian", "lowSodium", "sugarFree"
+        ]
+      },
+      "description": "Standardized diet suitability flags."
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the recipe was originally created (ISO 8601)."
+    },
+    "date_modified": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the recipe was last modified (ISO 8601)."
+    },
+    "rating": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Personal rating, 1 to 5 stars."
+    },
+    "prep_time": {
+      "$ref": "#/$defs/duration",
+      "description": "Preparation time."
+    },
+    "cook_time": {
+      "$ref": "#/$defs/duration",
+      "description": "Cooking time."
+    },
+    "rest_time": {
+      "$ref": "#/$defs/duration",
+      "description": "Resting time."
+    },
+    "images": {
+      "type": "object",
+      "properties": {
+        "hero": { "$ref": "#/$defs/image" },
+        "thumbnail": { "$ref": "#/$defs/image" }
+      },
+      "additionalProperties": false,
+      "description": "Recipe images."
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["book", "website", "person", "original", "other"],
+          "default": "other",
+          "description": "Source type."
+        },
+        "name": {
+          "type": "string",
+          "description": "Source name or author."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Source URL."
+        },
+        "page": {
+          "type": "integer",
+          "description": "Page number (for books)."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional source notes."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Where the recipe comes from."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Freeform tags for the recipe."
+    },
+    "equipment": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Required equipment."
+    },
+    "ingredients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["group", "items"],
+        "properties": {
+          "group": {
+            "type": "string",
+            "description": "Ingredient group name."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Ingredient name."
+                },
+                "quantity": {
+                  "type": "number",
+                  "description": "Amount needed."
+                },
+                "unit": {
+                  "type": "string",
+                  "description": "Unit of measurement."
+                },
+                "notes": {
+                  "type": "string",
+                  "description": "Preparation notes."
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Ingredient groups with their items."
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["instruction"],
+        "properties": {
+          "instruction": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Step instruction text."
+          },
+          "duration": {
+            "$ref": "#/$defs/duration",
+            "description": "Estimated time for this step."
+          },
+          "tip": {
+            "type": "string",
+            "description": "Optional tip for this step."
+          },
+          "image": {
+            "$ref": "#/$defs/image",
+            "description": "Optional step image."
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Ordered preparation steps."
+    },
+    "notes": {
+      "type": "string",
+      "description": "General notes about the recipe."
+    },
+    "import_notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Warnings or notes generated during import."
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for import_notes (legacy)."
+    },
+    "nutrition": {
+      "type": "object",
+      "properties": {
+        "estimated": {
+          "type": "boolean",
+          "default": false,
+          "description": "True if nutrition values were estimated by an LLM rather than provided by the recipe author."
+        },
+        "per_serving": {
+          "type": "object",
+          "propertyNames": {
+            "enum": [
+              "calories",
+              "fat",
+              "saturated_fat",
+              "trans_fat",
+              "cholesterol",
+              "carbohydrates",
+              "sugar",
+              "fiber",
+              "protein",
+              "sodium",
+              "potassium",
+              "calcium",
+              "iron",
+              "magnesium",
+              "zinc",
+              "phosphorus",
+              "vitamin_a",
+              "vitamin_b6",
+              "vitamin_b12",
+              "vitamin_c",
+              "vitamin_d",
+              "vitamin_e",
+              "vitamin_k",
+              "thiamin",
+              "riboflavin",
+              "niacin",
+              "folate",
+              "omega_3",
+              "omega_6"
+            ]
+          },
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          },
+          "description": "Nutritional values per serving. Keys must use the controlled vocabulary defined in propertyNames. Units: kcal for calories, g for macros/fiber, mg for minerals/vitamins (except vitamin_a/d/e/k in mcg)."
+        }
+      },
+      "required": ["per_serving"],
+      "additionalProperties": false,
+      "description": "Nutrition facts, either author-provided or LLM-estimated."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "duration": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "description": "Duration in minutes (backward compatibility)."
+        },
+        {
+          "type": "string",
+          "pattern": "^(\\d+h)?(\\d+m)?(\\d+s)?$",
+          "minLength": 1,
+          "description": "Duration string, e.g. \"1h30m\", \"45m\", \"30s\"."
+        }
+      ]
+    },
+    "image": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Image URL."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "source_url": {
+              "type": "string",
+              "description": "Original image URL."
+            },
+            "file": {
+              "type": "string",
+              "description": "Local bundled file name."
+            }
+          },
+          "additionalProperties": false,
+          "description": "Image with optional local file reference."
+        }
+      ]
+    }
+  }
+}
