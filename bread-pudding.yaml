@@ -65,8 +65,6 @@ ingredients:
 steps:
   - instruction: "Preheat oven to 350°F."
   - instruction: "Grease a square baking dish."
-  - instruction: "Sauté chopped onion until soft and golden."
-    duration: "5m"
   - instruction: "In a large bowl, combine bread cubes, ham, cheese, onion and green onions."
   - instruction: "In another bowl, whisk eggs, milk, soy sauce, brown sugar, salt, and pepper."
   - instruction: "Pour the egg mixture over the bread mixture and stir to combine."
